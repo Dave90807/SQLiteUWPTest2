@@ -8,6 +8,17 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="44" Margin="96,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="839">
+            <Run Text="This sample code came from the following Microsoft website:  "/>
+            <Span Foreground="Green" FontSize="12.6666666666667" FontFamily="Consolas">
+                <Run Text=" "/>
+            </Span>
+            <LineBreak/>
+            <Span Foreground="Green" FontSize="12.6666666666667" FontFamily="Consolas">
+                <Run Text="https://code.msdn.microsoft.com/windowsapps/Implement-SQLite-Local-8b13a307 "/>
+            </Span>
+        </TextBlock>
+        <Button x:Name="buttonCreateDB" Content="Make dB / Table" HorizontalAlignment="Left" Height="32" Margin="138,105,0,0" VerticalAlignment="Top" Width="131" Click="buttonCreateDB_Click"/>
 
     </Grid>
 </Page>

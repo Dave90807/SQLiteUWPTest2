@@ -27,6 +27,11 @@ namespace SQLiteUWPTest2
         {
             this.InitializeComponent();
         }
+
+        private void buttonCreateDB_Click(object sender, RoutedEventArgs e)
+        {
+            LocalDatabase.CreateDatabase();
+        }
     }
     public class LocalDatabase
     {
