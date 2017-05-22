@@ -44,8 +44,8 @@
             <Button Name="buttonDelCreateTable" Content="Del/Create Table" Height="80" FontSize="25" Click="buttonDelCreateTable_Click" HorizontalAlignment="Stretch"></Button>
             <Button x:Name="buttonOpenDB" Content="Open dB Folder" Height="80" FontSize="25" Click="buttonOpenDB_Click" HorizontalAlignment="Stretch"/>
             <Button x:Name="buttonDelRow" Content="Delete Row" Height="80" FontSize="25" Click="buttonDelRow_Click" HorizontalAlignment="Stretch"/>
-            <TextBox Name="tbxDelName" Text="" Height="80" FontSize="20" HorizontalAlignment="Stretch" PlaceholderText="Type Name to delete" VerticalAlignment="Center" TextWrapping="Wrap" DoubleTapped="tbxDelName_DoubleTapped" > 
-            </TextBox>
+            <TextBox Name="tbxDelName" Text="" Height="80" FontSize="20" HorizontalAlignment="Stretch" PlaceholderText="Type Name to delete" VerticalAlignment="Center" TextWrapping="Wrap" DoubleTapped="tbxDelName_DoubleTapped" />
+            <TextBox Name="tbxAddName" Text="" Height="80" FontSize="20" HorizontalAlignment="Stretch" PlaceholderText="Type Name to add" VerticalAlignment="Center" TextWrapping="Wrap" DoubleTapped="tbxAddName_DoubleTapped" ></TextBox>
         </StackPanel>
         <ScrollViewer Grid.Column="1">
             <StackPanel >
