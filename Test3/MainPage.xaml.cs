@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
+using System.Text.RegularExpressions;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 namespace Test3
 {
@@ -133,6 +134,39 @@ namespace Test3
                 tbxDelName.Text = "";
             }
             this.LV1.ItemsSource = users;
+        }
+        private void tbxAddName_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            // Get a reference to the SQLite database
+            this.DBPath = Path.Combine(
+               Windows.Storage.ApplicationData.Current.LocalFolder.Path, "user.sqlite");
+            // Initialize (Open w New Connection) the database if necessary
+            var db = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DBPath);
+            using (db)
+            {
+                // Add New Record With UserName Equal to content of Text Field If Table Exists
+               string dbs = "INSERT INTO User(UserName) VALUES('" + tbxAddName.Text + "')";
+                db.Execute(dbs);
+                users = db.Table<User>().ToList();
+                tbxAddName.Text = "";
+            }
+            this.LV1.ItemsSource = users;
+        }
+
+        private void tbxAddName_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            //This requires using RegularExpressions
+            // It really doesn't work as expected
+            Regex myReg = new Regex(@"[^a-zA-Z0-9\s[\b]]");
+             if (myReg.IsMatch(e.Key.ToString()) || e.Key == Windows.System.VirtualKey.Back)
+                {
+                    string text = tbxAddName.Text;
+                    if (text.Length > 0)
+                    {
+                        tbxAddName.Text = text.Remove(text.Length - 1);
+                        tbxAddName.SelectionStart = text.Length;
+                    }
+                }
         }
     }
 }
