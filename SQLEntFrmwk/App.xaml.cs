@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EFGetStarted.UWP;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +32,9 @@ namespace SQLEntFrmwk
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            using (var db = new BloggingContext())
+                db.Database.Migrate();
         }
 
         /// <summary>
