@@ -145,6 +145,7 @@ namespace Test3
                 // Add Record in Table If Exists
                 // Create SQLite Query String
                 string sqlQStrng = "INSERT INTO User (UserName) VALUES ('" + tbxAddName.Text + "')";
+                // Note that there is no comma and ",db" when the table execute is formatted with "db.Execute"
                 db.Execute(sqlQStrng);
                 users = db.Table<User>().ToList();
                 tbxAddName.Text = "";
