@@ -134,24 +134,6 @@ namespace Test3
             }
             this.LV1.ItemsSource = users;
         }
-        private void tbxAddName_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
-        {
-            // Get a reference to the SQLite database
-            this.DBPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "user.sqlite");
-            // Initialize (Open w New Connection) the database if necessary
-            var db = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DBPath);
-            using (db)
-            {
-                // Add Record in Table If Exists
-                // Create SQLite Query String
-                string sqlQStrng = "INSERT INTO User (UserName) VALUES ('" + tbxAddName.Text + "')";
-                // Note that there is no comma and ",db" when the table execute is formatted with "db.Execute"
-                db.Execute(sqlQStrng);
-                users = db.Table<User>().ToList();
-                tbxAddName.Text = "";
-            }
-            this.LV1.ItemsSource = users;
-        }
     }
 }
 
